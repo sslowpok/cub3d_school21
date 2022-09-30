@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 12:07:46 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/09/30 13:43:20 by sslowpok         ###   ########.fr       */
+/*   Created: 2022/09/30 13:15:24 by sslowpok          #+#    #+#             */
+/*   Updated: 2022/09/30 13:53:13 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int main(int argc, char **argv)
+void init_game(t_game *game)
 {
-    int fd;
-    int error_code;
-    
-    if (argc != 2)
-        return (error_handler("Usage: ./cub3d MAP.cub"));
-    check_map_extension(argv[1]);
+    game->mlx = mlx_init();
+    if (!game->mlx)
+    {
+        error_handler("Error: allocation failed");
+        exit(1);
+    }
+}
 
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0)
-        return (error_handler("Error: cannot read file"));
-        
-    // empty file?
+int cub3d(int fd)
+{
+    t_game *game;
+    init_game(game);
+
+
+
+    // free game
     
-    error_code = cub3d(fd);
-    close(fd);
-    
-    return (error_code);
+    return (0);
 }

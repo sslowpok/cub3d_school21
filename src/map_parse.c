@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 12:07:46 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/09/30 13:43:20 by sslowpok         ###   ########.fr       */
+/*   Created: 2022/09/30 12:19:43 by sslowpok          #+#    #+#             */
+/*   Updated: 2022/09/30 13:42:30 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int main(int argc, char **argv)
+void check_map_extension(char *map)
 {
-    int fd;
-    int error_code;
-    
-    if (argc != 2)
-        return (error_handler("Usage: ./cub3d MAP.cub"));
-    check_map_extension(argv[1]);
+    char *tmp;
 
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0)
-        return (error_handler("Error: cannot read file"));
-        
-    // empty file?
-    
-    error_code = cub3d(fd);
-    close(fd);
-    
-    return (error_code);
+    tmp = ft_strrchr(map, '.');
+    if (!tmp || ft_strcmp(tmp, ".cub"))
+    {
+        error_handler("Error: cannot read the map");
+        exit(1);
+    }
 }
