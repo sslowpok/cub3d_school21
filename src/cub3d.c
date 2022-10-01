@@ -15,6 +15,7 @@
 int init_game(t_game *game)
 {
     int n;
+    int i;
 
     game->mlx = mlx_init();
     if (!game->mlx)
@@ -23,7 +24,7 @@ int init_game(t_game *game)
         exit(1);
     }
     game->floor_color = 16777216;
-    game->ceil_color =  16777216;
+    game->ceil_color =  16777217;
 //    game->height
 //    game->width
 
@@ -41,6 +42,10 @@ int init_game(t_game *game)
         return (errno);
     game->img_data_addr = (unsigned int *)mlx_get_data_addr(game->img_ptr, \
 	&n, &n, &n);
+    i = -1;
+    while (++i < 5)
+        game->texture[i].ptr = NULL;
+
     return 0;
 }
 
