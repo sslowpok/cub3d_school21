@@ -6,7 +6,7 @@
 #    By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 14:49:43 by sslowpok          #+#    #+#              #
-#    Updated: 2021/10/21 16:39:51 by sslowpok         ###   ########.fr        #
+#    Updated: 2022/09/30 12:15:07 by sslowpok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS	= ft_bzero.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
-			ft_split.c
+			ft_split.c \
+			ft_strcmp.c
 
 BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \
@@ -62,7 +63,7 @@ OBJ_BONUS 	= ${BONUS:.c=.o}
 
 AR			= ar rcs
 RM			= rm -f
-CC			= gcc
+CC			= clang
 CFLAGS		= -Wall -Wextra -Werror
 
 
