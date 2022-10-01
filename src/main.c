@@ -27,7 +27,7 @@ int main(int argc, char **argv)
         
     // empty file?
     
-    error_code = cub3d(fd);
+    error_code = cub3d(fd, argv[1]);
     close(fd);
     
     return (error_code);
