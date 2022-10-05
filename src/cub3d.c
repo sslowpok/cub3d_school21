@@ -34,11 +34,11 @@ int init_game(t_game *game)
 
     game->mlx_win = mlx_new_window(game->mlx, game->img_resolution_x, \
 	game->img_resolution_y, "cub3D");
-    if (game->mlx_win == NULL)
+    if (!game->mlx_win)
         return (errno);
     game->img_ptr = mlx_new_image(game->mlx, game->img_resolution_x, \
 	game->img_resolution_y);
-    if (game->img_ptr == NULL)
+    if (!game->img_ptr)
         return (errno);
     game->img_data_addr = (unsigned int *)mlx_get_data_addr(game->img_ptr, \
 	&n, &n, &n);
@@ -79,19 +79,63 @@ static void	init_alloc_game(t_game *game)
 }
  */
 
+
+static int key_hook(int keycode, __unused t_game *game)
+{
+
+    if (keycode == 53) // esc
+        exit (0);
+    return 0;
+}
+
+static int	my_if_closed_window(int keycode, t_game *game)
+{
+    (void) keycode;
+    (void) game;
+    exit(0);
+}
+
+int	game_loop(t_game *game)
+{
+//    my_raycasting(game);
+//    my_store_floor_cell(game);
+//    draw_walls(game);
+    mlx_put_image_to_window(game->mlx, game->mlx_win, game->img_ptr, 0, 0);
+    return (0);
+}
+
 int cub3d(int fd, char *map)
 {
-    int error_code;
+    (void) fd;
+    (void) map;
+//    int error_code;
     t_game game;
     init_game(&game);
-    if (parse_map(fd, map, &game))
-        exit(1);
+
+    // parse map
+
+    parse_map(fd, map, &game);
 
 
 
-    error_code = game_play(&game);
+
+    // game play
+    mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
+    mlx_hook(game.mlx_win, 17, 0L, my_if_closed_window, &game);
+    mlx_loop_hook(game.mlx, game_loop, &game);
+    mlx_loop(game.mlx);
+
+
+    /*
+    mlx_hook(data->mlx_win, 2, 0, &key_press, data);
+	mlx_hook(data->mlx_win, 3, 0, &key_unpress, data);
+	mlx_hook(data->mlx_win, 17, 0, &end_program, data);
+	mlx_mouse_hook(data->mlx_win, &ft_mouse, data);
+	mlx_loop_hook(data->mlx, render_next_frame, data);
+	mlx_loop(data->mlx);
+     */
 
     // free game
     
-    return (error_code);
+    return (0);
 }

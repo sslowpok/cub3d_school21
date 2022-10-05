@@ -15,10 +15,7 @@ SRC_LIST	=	main.c \
 				error_handler.c \
 				map_parse.c \
 				cub3d.c \
-				game_play.c \
 				get_next_line.c \
-				parse_textures1.c \
-				parse_textures2.c
 
 
 OBJ_LIST	=	$(SRC:%.c=%.o)

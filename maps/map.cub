@@ -1,10 +1,9 @@
-
 NO ./resources/w1.xpm
 SO ./resources/w4.xpm
 WE ./resources/w5.xpm
 EA ./resources/wall8.xpm
 
-C      200 ,     230,           255
+C      200,     230,           255
 F 80,60,30
 
         1111111111111111111111111

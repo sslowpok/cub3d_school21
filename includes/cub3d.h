@@ -13,21 +13,17 @@
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_texture
-{
-    void			*ptr;
-    unsigned int	*data_addr;
-    double			aspect_ratio;
-    unsigned int	width;
-    unsigned int	height;
-}	t_texture;
-
 typedef struct s_rgb
 {
     unsigned int	r;
     unsigned int	g;
     unsigned int	b;
 }	t_rgb;
+
+typedef struct s_texture
+{
+    void    *ptr;
+}   t_texture;
 
 typedef struct s_game
 {
@@ -41,8 +37,9 @@ typedef struct s_game
 
     unsigned int    map_temp_h;
 
-    t_texture texture[4];
     t_rgb			rgb;
+    t_texture       texture[4];
+
 
     void			*img_ptr;
     unsigned int	*img_data_addr;
@@ -58,8 +55,6 @@ void check_map_extension(char *map);
 int cub3d(int fd, char *map);
 int game_play(t_game *game);
 int parse_map(int fd, char *map, t_game *game);
-int	parse_textures1(t_game *game, char *line);
-int	parse_textures2(t_game *game, char *line, char c);
 
 
 

@@ -24,33 +24,78 @@ void check_map_extension(char *map)
     }
 }
 
-static int parse_textures(t_game *game, char **line, int fd)
+int parse1_continue(__unused t_game *game, char *line, __unused int index)
 {
-    int     res;
+//    int     len;
     char    *tmp;
 
-    res = 0;
+    printf("PARSE1\n");
+
+    tmp = line;
+//    len = ft_strlen(line);
+//    if (len < 5)
+    printf("%s\n", tmp);
+
+
+    return (0);
+}
+
+int parse1(t_game *game, char *line)
+{
+    int index;
+
+    if (line[0] == 'N' && line[1] == 'O')
+        index = 0;
+    else if (line[0] == 'S' && line[1] == 'O')
+        index = 1;
+    else if (line[0] == 'W' && line[1] == 'E')
+        index = 2;
+    else if (line[0] == 'E' && line[1] == 'A')
+        index = 3;
+    else
+        return error_handler("Error: wrong texture format. Need \"NO, SO, WE, EA\"");
+    if (game->texture[index].ptr != NULL)
+        return error_handler("Error: texture is duplicated.");
+    if (line[2] != ' ')
+        return error_handler("Error: wrong texture format. Need \"NO, SO, WE, EA\" and path");
+    line += 2;
+    while (*line && *line == ' ')
+        line++;
+    return (parse1_continue(game, line, index));
+}
+
+int parse2(__unused t_game *game, __unused char *line)
+{
+    return (0);
+}
+
+static int parse_textures(__unused t_game *game, char **line, int fd)
+{
+    int     error_code;
+    char    *tmp;
+
+    error_code = 0;
     tmp = get_next_line(fd);
     *line = ft_strtrim(tmp, " ");
     free(tmp);
-    while (*line != NULL)
+    while ((*line) != NULL)
     {
+        printf("line: %s", *line);
+
         if (**line == 'N' || **line == 'S' || **line == 'W' || **line == 'E')
-        {
-            res = parse_textures1(game, *line);
-        }
+            error_code = parse1(game, *line);
         else if (**line == 'C' || **line == 'F')
-        {
-            res = parse_textures2(game, *line, **line);
-        }
+           error_code = parse2()
         else if (**line != '\0' && (**line == '1' || **line == ' '))
             return (0);
-        free(*line);
-        if (res)
+
+        if (error_code)
             return (1);
         *line = get_next_line(fd);
         game->map_temp_h++;
     }
+
+
     if (!(*line))
         return (error_handler("Error: map does not exist"));
 
@@ -60,7 +105,6 @@ static int parse_textures(t_game *game, char **line, int fd)
 int parse_map(int fd, __unused char *map, t_game *game)
 {
     char    *line;
-
 
     if (parse_textures(game, &line, fd))
         return (1);
