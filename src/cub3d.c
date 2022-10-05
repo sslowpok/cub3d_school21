@@ -24,7 +24,8 @@ int init_game(t_game *game)
         exit(1);
     }
     game->floor_color = 16777216;
-    game->ceil_color =  16777217;
+    game->ceil_color =  16777216;
+
 //    game->height
 //    game->width
 
