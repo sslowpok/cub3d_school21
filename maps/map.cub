@@ -1,10 +1,10 @@
-NO ./resources/w1.xpm
+NO ./resources/wall_bricks.xpm
 SO ./resources/w4.xpm
-WE ./resources/w5.xpm
+WE ./resources/wall_bricks.xpm
 EA ./resources/wall8.xpm
 
-C      200,     230,           255
-F 80,60,30
+C 135,206,235
+F 80, 60, 30
 
         1111111111111111111111111
         1001000000100000000000001
