@@ -42,15 +42,27 @@ typedef struct s_game
 
     unsigned int    map_temp_h;
     unsigned int    map_height;
+    unsigned int    map_length;
 
     t_rgb			rgb;
     t_texture       texture[4];
 
+    double          p_pos_x;
+    double          p_pos_y;
+    double          p_angle;
+    double          p_vector_x;
+    double          p_vector_y;
+    float			col_center;     // ???
+    double			col_scale;      // ???
 
     void			*img_ptr;
     unsigned int	*img_data_addr;
     unsigned int	img_resolution_x;
     unsigned int	img_resolution_y;
+
+    char            **map_array;
+
+//    column??
     
 } t_game;
 
@@ -59,9 +71,9 @@ char	*get_next_line(int fd);
 int error_handler(char *msg);
 void check_map_extension(char *map);
 int cub3d(int fd, char *map);
-int game_play(t_game *game);
 int parse_map(int fd, char *map, t_game *game);
 int parse_textures(t_game *game, char **line, int fd);
+void free_map_array(t_game *game);
 
 
 

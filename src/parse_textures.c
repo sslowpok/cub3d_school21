@@ -165,10 +165,9 @@ int parse_textures(t_game *game, char **line, int fd)
             error_code = parse1(game, *line);
         else if (**line == 'C' || **line == 'F')
             error_code = parse2(game, *line, **line);
-        else if (**line != '\0' && (**line == '1' || **line == ' ')) {
+        else if (**line != '\0' && (**line == '1' || **line == ' '))
             return (0);
-        }
-            free(*line);
+        free(*line);
         if (error_code)
             return (1);
         *line = get_next_line(fd);

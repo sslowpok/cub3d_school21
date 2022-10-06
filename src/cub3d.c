@@ -70,9 +70,9 @@ static void	init_alloc_game(t_game *game)
 
 static int key_hook(int keycode, __unused t_game *game)
 {
-
     if (keycode == 53) // esc
-        exit (0);
+        exit(0);
+//    __sincos(game->p_angle, &game->p_vect_y, &game->p_vect_x);
     return 0;
 }
 
@@ -85,7 +85,8 @@ static int	my_if_closed_window(int keycode, t_game *game)
 
 void draw_ceil_floor(t_game *game)
 {
-    unsigned int	i;
+    unsigned int    i;
+
     i = -1;
     while (++i < game->img_resolution_x * game->img_resolution_y / 2)
         game->img_data_addr[i] = game->ceil_color;
@@ -99,36 +100,38 @@ int	game_loop(t_game *game)
 //    draw_walls(game);
     draw_ceil_floor(game);
 
-
-
     mlx_put_image_to_window(game->mlx, game->mlx_win, game->img_ptr, 0, 0);
     return (0);
 }
 
+int make_image(t_game *game)
+{
+    int n;
 
+    game->mlx_win = mlx_new_window(game->mlx, game->img_resolution_x, \
+	game->img_resolution_y, "cub3D");
+    if (!game->mlx_win)
+        return (errno);
+    game->img_ptr = mlx_new_image(game->mlx, game->img_resolution_x, \
+	game->img_resolution_y);
+    if (!game->img_ptr)
+        return (errno);
+    game->img_data_addr = (unsigned int *)mlx_get_data_addr(game->img_ptr, \
+	&n, &n, &n);
+        return (0);
+}
 
 
 int cub3d(int fd, char *map)
 {
     (void) fd;
     (void) map;
-    int n;
 
     t_game game;
     init_game(&game);
     parse_map(fd, map, &game);
-
-    game.mlx_win = mlx_new_window(game.mlx, game.img_resolution_x, \
-	game.img_resolution_y, "cub3D");
-    if (!game.mlx_win)
-        return (errno);
-    game.img_ptr = mlx_new_image(game.mlx, game.img_resolution_x, \
-	game.img_resolution_y);
-    if (!game.img_ptr)
-        return (errno);
-    game.img_data_addr = (unsigned int *)mlx_get_data_addr(game.img_ptr, \
-	&n, &n, &n);
-
+    if (make_image(&game))
+        return (error_handler("Error: cannot load textures"));
 
 
     // game play
@@ -137,15 +140,6 @@ int cub3d(int fd, char *map)
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
 
-
-    /*
-    mlx_hook(data->mlx_win, 2, 0, &key_press, data);
-	mlx_hook(data->mlx_win, 3, 0, &key_unpress, data);
-	mlx_hook(data->mlx_win, 17, 0, &end_program, data);
-	mlx_mouse_hook(data->mlx_win, &ft_mouse, data);
-	mlx_loop_hook(data->mlx, render_next_frame, data);
-	mlx_loop(data->mlx);
-     */
 
     // free game
     

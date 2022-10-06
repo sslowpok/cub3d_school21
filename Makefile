@@ -16,7 +16,8 @@ SRC_LIST	=	main.c \
 				map_parse.c \
 				cub3d.c \
 				get_next_line.c \
-				parse_textures.c
+				parse_textures.c \
+				all_free.c
 
 
 OBJ_LIST	=	$(SRC:%.c=%.o)
