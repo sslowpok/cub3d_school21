@@ -168,7 +168,7 @@ int parse_map(int fd, char *map, t_game *game)
         return (1);
     if (count_lines(game, map) < 3)
         return (1);
-    game->map_array = malloc(sizeof (char *) * game->map_height);
+    game->map_array = malloc(sizeof(char *) * game->map_height);
     if (!game->map_array)
         return error_handler("Error: allocation failed");
     i = -1;
