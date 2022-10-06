@@ -89,7 +89,7 @@ char	*get_next_line(int fd)
     char		*buf;
     static char	*text;
 
-    if ((fd < 0) || (BUFFER_SIZE <= 0))
+    if ((fd < 0) != 0)
         return (NULL);
     buf = malloc((BUFFER_SIZE + 1) * (sizeof(char)));
     if (!buf)

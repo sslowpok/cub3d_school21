@@ -14,7 +14,6 @@
 
 int init_game(t_game *game)
 {
-    int n;
     int i;
 
     game->mlx = mlx_init();
@@ -25,28 +24,16 @@ int init_game(t_game *game)
     }
     game->floor_color = 16777216;
     game->ceil_color =  16777216;
-
-//    game->height
+    game->map_height = 0;
 //    game->width
-
     game->map_temp_h = 0;
     game->img_resolution_x = 1200;
     game->img_resolution_y = 600;
 
-    game->mlx_win = mlx_new_window(game->mlx, game->img_resolution_x, \
-	game->img_resolution_y, "cub3D");
-    if (!game->mlx_win)
-        return (errno);
-    game->img_ptr = mlx_new_image(game->mlx, game->img_resolution_x, \
-	game->img_resolution_y);
-    if (!game->img_ptr)
-        return (errno);
-    game->img_data_addr = (unsigned int *)mlx_get_data_addr(game->img_ptr, \
-	&n, &n, &n);
+
     i = -1;
     while (++i < 5)
         game->texture[i].ptr = NULL;
-
     return 0;
 }
 
@@ -96,27 +83,51 @@ static int	my_if_closed_window(int keycode, t_game *game)
     exit(0);
 }
 
+void draw_ceil_floor(t_game *game)
+{
+    unsigned int	i;
+    i = -1;
+    while (++i < game->img_resolution_x * game->img_resolution_y / 2)
+        game->img_data_addr[i] = game->ceil_color;
+    while (i++ < game->img_resolution_x * game->img_resolution_y)
+        game->img_data_addr[i - 1] = game->floor_color;
+}
+
 int	game_loop(t_game *game)
 {
 //    my_raycasting(game);
-//    my_store_floor_cell(game);
 //    draw_walls(game);
+    draw_ceil_floor(game);
+
+
+
     mlx_put_image_to_window(game->mlx, game->mlx_win, game->img_ptr, 0, 0);
     return (0);
 }
+
+
+
 
 int cub3d(int fd, char *map)
 {
     (void) fd;
     (void) map;
-//    int error_code;
+    int n;
+
     t_game game;
     init_game(&game);
-
-    // parse map
-
     parse_map(fd, map, &game);
 
+    game.mlx_win = mlx_new_window(game.mlx, game.img_resolution_x, \
+	game.img_resolution_y, "cub3D");
+    if (!game.mlx_win)
+        return (errno);
+    game.img_ptr = mlx_new_image(game.mlx, game.img_resolution_x, \
+	game.img_resolution_y);
+    if (!game.img_ptr)
+        return (errno);
+    game.img_data_addr = (unsigned int *)mlx_get_data_addr(game.img_ptr, \
+	&n, &n, &n);
 
 
 

@@ -22,7 +22,12 @@ typedef struct s_rgb
 
 typedef struct s_texture
 {
-    void    *ptr;
+    void            *ptr;
+    unsigned int    *data_addr;
+    double          aspect_ratio;
+    unsigned int    width;
+    unsigned int    height;
+
 }   t_texture;
 
 typedef struct s_game
@@ -36,6 +41,7 @@ typedef struct s_game
     unsigned int	floor_color;
 
     unsigned int    map_temp_h;
+    unsigned int    map_height;
 
     t_rgb			rgb;
     t_texture       texture[4];
@@ -55,6 +61,7 @@ void check_map_extension(char *map);
 int cub3d(int fd, char *map);
 int game_play(t_game *game);
 int parse_map(int fd, char *map, t_game *game);
+int parse_textures(t_game *game, char **line, int fd);
 
 
 
