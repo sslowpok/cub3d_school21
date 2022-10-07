@@ -18,7 +18,11 @@ SRC_LIST	=	main.c \
 				get_next_line.c \
 				parse_textures.c \
 				all_free.c \
-				raycasting.c
+				raycasting.c \
+				draw.c \
+				checks.c \
+				parse_utils.c \
+				hooks.c
 
 
 OBJ_LIST	=	$(SRC:%.c=%.o)
