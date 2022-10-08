@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:46:31 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/10/07 13:11:56 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:21:02 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	free_map_array(t_game *game)
 	}
 	if (game->map_array)
 		free(game->map_array);
-    if (game->column)
-        free(game->column);
+	if (game->column)
+		free(game->column);
 }

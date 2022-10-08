@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:15:24 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/10/07 13:44:20 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:21:24 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	cub3d(int fd, char *map)
 
 	init_game(&game);
 	if (parse_map(fd, map, &game))
-        return (1);
-    if (make_image(&game))
+		return (1);
+	if (make_image(&game))
 		return (error_handler("Cannot load textures"));
 	mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0L, my_if_closed_window, &game);

@@ -55,8 +55,8 @@ int	parse1(t_game *game, char *line)
 	if (game->texture[index].ptr != NULL)
 		return (error_handler("Texture is duplicated."));
 	if (line[2] != ' ')
-		return (error_handler("Wrong texture format. \
-		Need \"NO, SO, WE, EA\" and path"));
+		return (error_handler("Wrong texture format." \
+		"Need \"NO, SO, WE, EA\" and path"));
 	line += 2;
 	while (*line && *line == ' ')
 		line++;
