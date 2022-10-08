@@ -36,7 +36,7 @@ void	handle_step(int keycode, t_game *game)
 	}
 }
 
-static int	key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 13 || keycode == 0 || keycode == 1 || keycode == 2)
 		handle_step(keycode, game);
@@ -50,7 +50,7 @@ static int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-static int	my_if_closed_window(int keycode, t_game *game)
+int	my_if_closed_window(int keycode, t_game *game)
 {
 	(void) keycode;
 	(void) game;

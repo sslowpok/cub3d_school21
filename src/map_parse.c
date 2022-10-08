@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void	check_map_extension(char *map)
+void	check_map_extension(char *map)
 {
 	char	*tmp;
 

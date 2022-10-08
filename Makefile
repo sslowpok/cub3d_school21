@@ -40,7 +40,7 @@ all:	$(LIBFT) $(NAME)
 
 $(LIBFT):
 		make bonus -C ./libft/
-		make -C ./mlx/
+		make -C ./mlx/ -Wno-deprecated
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(HEADERS) | $(OBJ_DIR)
 				$(CC) $(CFLAGS) -c $< -o $@

@@ -97,8 +97,8 @@ void		draw_walls(t_game *game);
 int			validate_map(t_game *game);
 int			parse1(t_game *game, char *line);
 void		handle_step(int keycode, t_game *game);
-static int	key_hook(int keycode, t_game *game);
-static int	my_if_closed_window(int keycode, t_game *game);
+int	        key_hook(int keycode, t_game *game);
+int	        my_if_closed_window(int keycode, t_game *game);
 int			game_loop(t_game *game);
 
 #endif
