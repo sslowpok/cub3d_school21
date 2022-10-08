@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (error_handler("Cannot read file"));
 	error_code = cub3d(fd, argv[1]);
+//    printf("%d\n", error_code);
 	close(fd);
 	return (error_code);
 }

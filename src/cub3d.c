@@ -57,8 +57,9 @@ int	cub3d(int fd, char *map)
 	t_game	game;
 
 	init_game(&game);
-	parse_map(fd, map, &game);
-	if (make_image(&game))
+	if (parse_map(fd, map, &game))
+        return (1);
+    if (make_image(&game))
 		return (error_handler("Cannot load textures"));
 	mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0L, my_if_closed_window, &game);

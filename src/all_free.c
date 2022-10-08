@@ -24,4 +24,6 @@ void	free_map_array(t_game *game)
 	}
 	if (game->map_array)
 		free(game->map_array);
+    if (game->column)
+        free(game->column);
 }
