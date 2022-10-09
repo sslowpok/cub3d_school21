@@ -65,7 +65,6 @@ int	cub3d(int fd, char *map)
 	mlx_hook(game.mlx_win, 17, 0L, my_if_closed_window, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
-	free_map_array(&game);
 	free(game.column);
 	return (0);
 }

@@ -91,9 +91,11 @@ int	validate_map(t_game *game)
 		if (game->map_length < (unsigned int)ft_strlen(game->map_array[i]))
 			game->map_length = (unsigned int)ft_strlen(game->map_array[i]);
 	}
+
 	if (check_symbols(game) || check_borders(game))
 	{
-		free_map_array(game);
+		// free_map_array(game);
+		exit(1);
 		return (1);
 	}
 	i = -1;

@@ -90,7 +90,6 @@ void		check_map_extension(char *map);
 int			cub3d(int fd, char *map);
 int			parse_map(int fd, char *map, t_game *game);
 int			parse_textures(t_game *game, char **line, int fd);
-void		free_map_array(t_game *game);
 void		raycasting(t_game *game);
 void		draw_ceil_floor(t_game *game);
 void		draw_walls(t_game *game);
