@@ -1,0 +1,13 @@
+NO ./resources/camels.xpm
+SO ./resources/desert1.xpm
+WE ./resources/desert2.xpm
+EA ./resources/desert3.xpm
+
+C 0,191,245
+F 244, 164, 96
+
+1111111111111
+1000010000101
+1001000010N01
+1101101000001
+1111111111111

@@ -41,9 +41,9 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 13 || keycode == 0 || keycode == 1 || keycode == 2)
 		handle_step(keycode, game);
 	if (keycode == 123)
-		game->p_angle -= 0.1;
+		game->p_angle -= 0.2;
 	if (keycode == 124)
-		game->p_angle += 0.1;
+		game->p_angle += 0.2;
 	if (keycode == 53)
 		exit(0);
 	__sincos(game->p_angle, &game->p_vector_y, &game->p_vector_x);
