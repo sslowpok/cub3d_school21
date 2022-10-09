@@ -1,10 +1,10 @@
-NO ./resources/poke2.xpm
-SO ./resources/slowpok.xpm
-WE ./resources/poke3.xpm
-EA ./resources/pikachu.xpm
+NO ./resources/slowpok.xpm
+SO ./resources/poke2.xpm
+WE ./resources/pikapika.xpm
+EA ./resources/charmander.xpm
 
-C 0,191,245
-F 244, 164, 96
+C 255,230,255
+F 255, 0, 0
 
 1111111111111
 1000010000101
