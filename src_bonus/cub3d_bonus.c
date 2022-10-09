@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:15:24 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/10/08 12:21:24 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/10/09 17:15:24 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 int	init_game(t_game *game)
 {
@@ -64,6 +64,7 @@ int	cub3d(int fd, char *map)
 	mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0L, my_if_closed_window, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
+	mlx_hook(game.mlx_win, 6, 1L << 10, mouse_move, &game);
 	mlx_loop(game.mlx);
 	free(game.column);
 	return (0);

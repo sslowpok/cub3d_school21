@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:47:54 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/10/09 17:17:23 by sslowpok         ###   ########.fr       */
+/*   Created: 2022/10/09 17:16:41 by sslowpok          #+#    #+#             */
+/*   Updated: 2022/10/09 17:18:22 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -99,5 +99,6 @@ void		handle_step(int keycode, t_game *game);
 int			key_hook(int keycode, t_game *game);
 int			my_if_closed_window(int keycode, t_game *game);
 int			game_loop(t_game *game);
+int			mouse_move(int x, int y, t_game *game);
 
 #endif
